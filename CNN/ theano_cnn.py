@@ -224,7 +224,47 @@ def main():
 	plt.show(LL)
 	plt.show()
 
-	if __name__ == '__main__':
+	#visualising the filters. Comment out if you unnecessary 
+   	#Filter 1: (20, 3, 5, 5)
+	W1_weights = W1.get_values()
+	grid = np.zeros((8*5, 8*5))
+
+	#m, n tell the location where we want to draw on the grid
+	m = 0
+	n = 0
+	for i in xrange(20):
+		for j in xrange(3):
+			filt = W1_weights[i,j]
+			grid[m*5:(m+1)*5, n*5:(n+1)*5] = filt
+			m += 1
+			if m >= 8:
+				m = 0
+				n += 1
+	plt.imshow(grid, cmap = 'gray')
+	plt.title("W1")
+	plt.show()
+
+	#Filter 2: (50, 20, 5, 5)
+	W2_weights = W2.get_values()
+	grid = np.zeros((32*5, 32*5))
+
+	#m, n tell the location where we want to draw on the grid
+	m = 0
+	n = 0
+	for i in xrange(50):
+		for j in xrange(20):
+			filt = W2_weights[i,j]
+			grid[m*5:(m+1)*5, n*5:(n+1)*5] = filt
+			m += 1
+			if m >= 32:
+				m = 0
+				n += 1
+	plt.imshow(grid, cmap = 'gray')
+	plt.title("W2")
+	plt.show()
+
+
+if __name__ == '__main__':
 		main()
 		
 
